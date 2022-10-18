@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap-grid.rtl.min.css">
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"> -->
+    <!-- <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css"> -->
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/post" method="post">
+        <textarea rows="1" name="title" data-xf-init="textarea-handler suggested-threads" data-single-line="true"
+            class="input js-titleInput  input--title" autocomplete="off" placeholder="title" autofocus="autofocus"
+            maxlength="150" id="titleText" style=" overflow-wrap: break-word; height: 50px;"></textarea>
+        <!-- <input id='files' type="file" name="uploadImage"> -->
+        <!-- <button class="submit-btn" type='submit'>Upload</button> -->
+        <!-- <div class="fr-element fr-view" dir="ltr" contenteditable="true" style="min-height: 250px;"
+            aria-disabled="false" spellcheck="true">
+        </div> -->
+        <textarea name="path" id="path" cols="30" rows="3" placeholder="image path"></textarea>
+        <select name="tag" id="taG">
+            <option value="quocte">quocte</option>
+            <option value="thethao">thethao</option>
+            <option value="thoitiet">thoitiet</option>
+            <option value="thoisu">thoisu</option>
+        </select>
+        <textarea name="contentText" class="inputText" placeholder="content" autofocus="autofocus"
+            style=" overflow-wrap: break-word; height: 150px; width: 1000px;"></textarea>
+        <input type="submit" class="draft" value="saveDraft" name="draft">
+        <input type="submit" class="newThread" value="postThread" name="postnewThread"><br>
+        <input type="submit" class="loadDraft" value="loadDraft" name="loadDraft">
+    </form>
+    <a href="/template">template</a><br>
+    <a href="/">home</a><br>
+    <a href="/profile">profile</a>
+    <!-- <script>
+        let path = document.getElementById('path');
+        let taG = document.getElementById('taG');
+        let contentText = document.querySelector('.inputText');
+
+        var x = async function() {
+
+        };
+
+    </script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/js/bootstrap.esm.min.js"></script>
+
+</body>
+
+</html>

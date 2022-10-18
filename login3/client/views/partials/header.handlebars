@@ -1,0 +1,54 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button> -->
+            <a class="navbar-brand" href="/">
+                <img src="/image/logo.png" height="auto" width="auto"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/">home</a>
+                </li>
+                <li>
+                    <a href="/login">login</a>
+                </li>
+                <li>
+                    <a href="/profile">profile</a>
+                </li>
+                <li>
+                    <a href="/post">post</a>
+                </li>
+                <li><a href="/template">template</a>
+                    <ol>
+                        <li>
+                            <a href="/template/thethao">thethao</a>
+                        </li>
+                        <li>
+                            <a href="/template/quocte">quocte</a>
+                        </li>
+                        <li>
+                            <a href="/template/thoisu">thoisu</a>
+                        </li>
+                        <li>
+                            <a href="/template/thoitiet">thoitiet</a>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="/logout">logout</a>
+                </li>
+            </ul>
+            <p>Welcome back, {{name}}</p><img src="/image/{{img}}" height="100px" width="100px" />
+            {{!-- <div class="navbar-right">
+                <button class="btn btn-danger navbar-btn">Register</button>
+                <button class="btn btn-info navbar-btn">Login</button>
+            </div> --}}
+        </div>
+    </div>
+</nav>
