@@ -1,0 +1,14 @@
+<a href="http://127.0.0.1:3000/pos">Post new Thread</a><br>
+Categories:
+ <a href="http://127.0.0.1:3000/category/thethao">thethao</a> 
+ <a href="http://127.0.0.1:3000/category/quocte">quocte</a> 
+ <a href="http://127.0.0.1:3000/category/thoisu">thoisu</a> 
+ <a href="http://127.0.0.1:3000/category/thoitiet">thoitiet</a><br>
+{{#each post}}
+<h1>{{title}}</h1><br>
+<p>{{content}}</p><br>
+<img src="{{path}}" height="300px" width="auto"><br>
+<span>{{time}}</span><br>
+{{/each}}
+<br>
+<a href="http://127.0.0.1:3000">back to Homepage</a>
