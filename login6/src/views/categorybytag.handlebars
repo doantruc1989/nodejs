@@ -1,0 +1,10 @@
+<a href="http://127.0.0.1:3000/pos">Post new Thread</a>
+{{#each posts}}
+<h1><a href="http://127.0.0.1:3000/category/{{id}}">{{title}}</a></h1><br>
+<p>{{content}}</p><br>
+<img src="{{path}}" height="300px" width="auto"><br>
+<span>{{time}}</span><br>
+{{/each}}
+<br>
+<a href="http://127.0.0.1:3000">back to Homepage</a><br>
+<a href="http://127.0.0.1:3000/category">back to Category page</a>
