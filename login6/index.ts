@@ -2,11 +2,7 @@ import express, { Express, Request, Response } from 'express';
 const app: Express = express();
 const port = 3000;
 import * as bodyParser from 'body-parser';
-<<<<<<< HEAD
 import router from './routes/routes';
-=======
-import  router  from './routes/routes';
->>>>>>> 7ae84adc41d199bc6f1c5ba9c1f415cec5b5d7d7
 app.use(bodyParser.json());
 import "reflect-metadata";
 import * as path from 'path';
