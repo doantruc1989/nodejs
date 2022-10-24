@@ -32,7 +32,7 @@ export function postLogin(req: Request, res: Response, next: NextFunction) {
         res.cookie("username", username, {
           maxAge: rememberMe ? 2592000000 : undefined,
         });
-        res.redirect('/profile')
+        res.redirect("/profile");
         // res.send(
         //   'loggin successfully <br><a href="http://127.0.0.1:3000">back to homepage</a>'
         // );
@@ -58,17 +58,25 @@ export function getRegister(req: Request, res: Response, next: NextFunction) {
   // );
 }
 
-export async function createRegister(req: Request, res: Response, next: NextFunction) {
+export async function createRegister(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   const newUser = {
     password: req.body.psw,
     username: req.body.Username,
-    avatar: "1666357278165.png"
-  }
+    avatar: "1666357278165.png",
+  };
   if (req.body.psw !== req.body.pswrepeat) {
-    res.send('Password do not match <a href="http://127.0.0.1:3000/register">back.</a>')
+    res.send(
+      'Password do not match <a href="http://127.0.0.1:3000/register">back.</a>'
+    );
   }
-  const user = await myDataSource.getRepository(users).save(newUser)
-  res.send('register successfully <a href="http://127.0.0.1:3000">back to home page</a><br><a href="http://127.0.0.1:3000/profile">to profile</a>')
+  const user = await myDataSource.getRepository(users).save(newUser);
+  res.send(
+    'register successfully <a href="http://127.0.0.1:3000">back to home page</a><br><a href="http://127.0.0.1:3000/profile">to profile</a>'
+  );
 }
 
 export async function getProfile(
@@ -175,6 +183,7 @@ export async function toCategory(
       .createQueryBuilder("category")
       .leftJoinAndSelect("category.posts", "post")
       .where("post.categoriesId = :categoriesId", { categoriesId: 3 })
+      .andWhere("category.slud = :slud", { slud: req.params.slud })
       .getMany();
     let posts = categories[0].posts;
     res.render("categorybytag", {
@@ -217,12 +226,19 @@ export async function toCategory(
   const post = await myDataSource.getRepository("post").find({
     where: { id: req.params.slud },
   });
-  res.render('categoryDetail', {
+  res.render("categoryDetail", {
     post: post,
-  })
-
+  });
 }
 
 export function getHome(req: Request, res: Response, next: NextFunction) {
   res.render("home");
 }
+
+class PostService {
+  getPostById(id: string);
+
+  getPostByCateId(id: string);
+}
+
+const postService = new PostService();

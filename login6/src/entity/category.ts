@@ -2,13 +2,13 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 import { post } from "./post";
 
 @Entity()
-export class category {
-    @PrimaryGeneratedColumn()
-    "id": number
+export class Category {
+  @PrimaryGeneratedColumn()
+  "id": number;
 
-    @Column()
-    "category": string
+  @Column()
+  category: string;
 
-    @OneToMany(() => post, (post) => post.categories)
-    "posts": post[]
-};
+  @OneToMany(() => post, (post) => post.categories)
+  "posts": post[];
+}
