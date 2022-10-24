@@ -183,7 +183,7 @@ export async function toCategory(
       .createQueryBuilder("category")
       .leftJoinAndSelect("category.posts", "post")
       .where("post.categoriesId = :categoriesId", { categoriesId: 3 })
-      .andWhere("category.slud = :slud", { slud: req.params.slud })
+      // .andWhere("category.slud = :slud", { slud: req.params.slud })
       .getMany();
     let posts = categories[0].posts;
     res.render("categorybytag", {
@@ -235,10 +235,10 @@ export function getHome(req: Request, res: Response, next: NextFunction) {
   res.render("home");
 }
 
-class PostService {
-  getPostById(id: string);
+// class PostService {
+//   getPostById(id: string);
 
-  getPostByCateId(id: string);
-}
+//   getPostByCateId(id: string);
+// }
 
-const postService = new PostService();
+// const postService = new PostService();
