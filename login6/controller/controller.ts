@@ -32,10 +32,16 @@ export function postLogin(req: Request, res: Response, next: NextFunction) {
         res.cookie("username", username, {
           maxAge: rememberMe ? 2592000000 : undefined,
         });
+<<<<<<< HEAD
         res.redirect('/profile')
         // res.send(
         //   'loggin successfully <br><a href="http://127.0.0.1:3000">back to homepage</a>'
         // );
+=======
+        res.send(
+          'loggin successfully <br><a href="http://127.0.0.1:3000">back to homepage</a>'
+        );
+>>>>>>> 7ae84adc41d199bc6f1c5ba9c1f415cec5b5d7d7
       }
     );
   } else {
@@ -47,6 +53,7 @@ export function postLogin(req: Request, res: Response, next: NextFunction) {
 }
 
 export function getRegister(req: Request, res: Response, next: NextFunction) {
+<<<<<<< HEAD
   res.clearCookie("username");
   var options = {
     root: path.join(__dirname),
@@ -69,6 +76,11 @@ export async function createRegister(req: Request, res: Response, next: NextFunc
   }
   const user = await myDataSource.getRepository(users).save(newUser)
   res.send('register successfully <a href="http://127.0.0.1:3000">back to home page</a><br><a href="http://127.0.0.1:3000/profile">to profile</a>')
+=======
+  res.send(
+    'đây là register page <a href="http://127.0.0.1:3000">back to homepage</a>!'
+  );
+>>>>>>> 7ae84adc41d199bc6f1c5ba9c1f415cec5b5d7d7
 }
 
 export async function getProfile(
@@ -135,7 +147,10 @@ export async function postCategory(
   let title = req.body.title,
     image = req.body.path,
     contentText = req.body.contentText,
+<<<<<<< HEAD
     contentTextFull = req.body.contentTextFull,
+=======
+>>>>>>> 7ae84adc41d199bc6f1c5ba9c1f415cec5b5d7d7
     postnewThread = req.body.postnewThread,
     saveWrite = req.body.draft,
     loadDraft = req.body.loadDraft;
@@ -143,7 +158,10 @@ export async function postCategory(
     title: title,
     path: image,
     content: contentText,
+<<<<<<< HEAD
     contentFull: contentTextFull,
+=======
+>>>>>>> 7ae84adc41d199bc6f1c5ba9c1f415cec5b5d7d7
     username: req.cookies.username,
   };
   if (postnewThread && req.cookies.username) {
@@ -180,6 +198,10 @@ export async function toCategory(
     res.render("categorybytag", {
       posts: posts,
     });
+<<<<<<< HEAD
+=======
+    console.log(categories)
+>>>>>>> 7ae84adc41d199bc6f1c5ba9c1f415cec5b5d7d7
   } else if (req.params.slud == "quocte") {
     const categories = await myDataSource
       .getRepository(category)
@@ -214,6 +236,7 @@ export async function toCategory(
       posts: posts,
     });
   }
+<<<<<<< HEAD
   const post = await myDataSource.getRepository("post").find({
     where: { id: req.params.slud },
   });
@@ -221,6 +244,8 @@ export async function toCategory(
     post: post,
   })
 
+=======
+>>>>>>> 7ae84adc41d199bc6f1c5ba9c1f415cec5b5d7d7
 }
 
 export function getHome(req: Request, res: Response, next: NextFunction) {

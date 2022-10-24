@@ -1,9 +1,14 @@
 <form action="/post" method="post">
         <textarea name="title" id="title" cols="30" rows="3" placeholder="title">{{load.[0].title}}</textarea>
         <textarea name="path" id="path" cols="30" rows="3" placeholder="image path">{{load.[0].path}}</textarea>
+<<<<<<< HEAD
         <textarea name="contentText" id="inputContent" cols="30" rows="3" placeholder="small content">{{load.[0].content}}</textarea>
         <textarea name="contentTextFull" id="inputContent" placeholder="contentFull" 
             style=" overflow-wrap: break-word; height: 500px; width: 1000px;">{{load.[0].contentFull}}</textarea><br>
+=======
+        <textarea name="contentText" class="inputText" placeholder="content" autofocus="autofocus"
+            style=" overflow-wrap: break-word; height: 150px; width: 1000px;">{{load.[0].content}}</textarea><br>
+>>>>>>> 7ae84adc41d199bc6f1c5ba9c1f415cec5b5d7d7
         <input type="submit" class="draft" value="saveDraft" name="draft"><br>
         <input type="submit" class="loadDraft" value="loadDraft" name="loadDraft"><br>
         <input type="submit" class="newThread" value="postThread" name="postnewThread">
