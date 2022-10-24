@@ -1,0 +1,29 @@
+<form action="/post" method="post">
+
+
+
+    <textarea rows="1" name="title" data-xf-init="textarea-handler suggested-threads" data-single-line="true"
+        class="input js-titleInput  input--title" autocomplete="off" placeholder="title" autofocus="autofocus"
+        maxlength="150" id="titleText" style=" overflow-wrap: break-word; height: 50px;">{{drafts.[0].title}}</textarea>
+    <!-- <input id='files' type="file" name="uploadImage"> -->
+    <!-- <button class="submit-btn" type='submit'>Upload</button> -->
+    <!-- <div class="fr-element fr-view" dir="ltr" contenteditable="true" style="min-height: 250px;"
+            aria-disabled="false" spellcheck="true">
+        </div> -->
+    <textarea name="path" id="path" cols="30" rows="3" placeholder="image path">{{drafts.[0].path}}</textarea>
+    <textarea name="tag" id="taG" cols="30" rows="3" placeholder="tag"></textarea>
+    {{!-- <select name="tag" id="taG">
+        <option value="quocte">quocte</option>
+        <option value="thethao">thethao</option>
+        <option value="thoitiet">thoitiet</option>
+        <option value="thoisu">thoisu</option>
+    </select> --}}
+    <textarea name="contentText" class="inputText" placeholder="content" autofocus="autofocus"
+        style=" overflow-wrap: break-word; height: 150px; width: 1000px;">{{drafts.[0].content}}</textarea>
+    <input type="submit" class="draft" value="saveDraft" name="draft">
+    <input type="submit" class="newThread" value="postThread" name="postnewThread"><br>
+    <input type="submit" class="loadDraft" value="loadDraft" name="loadDraft">
+</form>
+<a href="/category">category</a><br>
+<a href="/">home</a><br>
+<a href="/profile">profile</a>

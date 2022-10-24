@@ -19,6 +19,7 @@ var connection = mysql.createConnection({
 // typeorm
 var dataSource = new typeorm.DataSource({
     type: "mysql",
+    extra: "",
     host: "localhost",
     port: 3306,
     username: "root",
@@ -49,6 +50,7 @@ app.set('views', path.join(__dirname, './client/views/'));
 //cookie parser
 const cookieParser = require('cookie-parser');
 const { ifError } = require('assert');
+const { Like } = require('typeorm');
 app.use(cookieParser());
 
 //bodyParser + static
@@ -117,78 +119,78 @@ function uploadFiles(req, res) {
     connection.end();
 };
 
-app.get('/template/thoisu', (req, res) => {
+app.get('/category/thoisu', (req, res) => {
     dataSource
         .initialize()
         .then(function (connection) {
-            return connection.getRepository("template");
+            return connection.getRepository("category");
         })
-        .then(function (templateRepository) {
-            return templateRepository.find({
-                where: { tag: "thoisu" }
+        .then(function (categoryRepository) {
+            return categoryRepository.find({
+                where: { tag: "%thoisu%" }
             })
         })
-        .then(function (template) {
-            // console.log("template: ", template);
+        .then(function (category) {
+            // console.log("category: ", category);
             res.render('home', {
-                template: template
+                category: category
             })
         });
 });
 
-app.get('/template/thethao', (req, res) => {
+app.get('/category/thethao', (req, res) => {
     dataSource
         .initialize()
         .then(function (connection) {
-            return connection.getRepository("template");
+            return connection.getRepository("category");
         })
-        .then(function (templateRepository) {
-            return templateRepository.find({
-                where: { tag: "thethao" }
+        .then(function (categoryRepository) {
+            return categoryRepository.find({
+                where: { tag: typeorm.ILike("%thethao%") }
             })
         })
-        .then(function (template) {
-            // console.log("template: ", template);
+        .then(function (category) {
+            // console.log("category: ", category);
             res.render('home', {
-                template: template
+                category: category
             })
         });
 });
 
-app.get('/template/quocte', (req, res) => {
+app.get('/category/quocte', (req, res) => {
     dataSource
         .initialize()
         .then(function (connection) {
-            return connection.getRepository("template");
+            return connection.getRepository("category");
         })
-        .then(function (templateRepository) {
-            return templateRepository.find({
+        .then(function (categoryRepository) {
+            return categoryRepository.find({
                 where: { tag: "quocte" }
             })
         })
-        .then(function (template) {
-            // console.log("template: ", template);
+        .then(function (category) {
+            // console.log("category: ", category);
             res.render('home', {
-                template: template
+                category: category
             })
         });
 });
 
-app.get('/template/thoitiet', (req, res) => {
+app.get('/category/thoitiet', (req, res) => {
     dataSource
         .initialize()
         .then(function (connection) {
-            return connection.getRepository("template");
+            return connection.getRepository("category");
         })
-        .then(function (templateRepository) {
-            return templateRepository.find({
+        .then(function (categoryRepository) {
+            return categoryRepository.find({
                 where: { tag: "thoitiet" }
             })
         })
-        .then(function (template) {
-            // console.log("template: ", template);
+        .then(function (category) {
+            // console.log("category: ", category);
             res.render('home', {
-                template: template
+                category: category
             })
         });
 });
@@ -196,19 +198,19 @@ app.get('/template/thoitiet', (req, res) => {
 
 
 
-app.get('/template', (req, res) => {
+app.get('/category', (req, res) => {
     dataSource
         .initialize()
         .then(function (connection) {
-            return connection.getRepository("template");
+            return connection.getRepository("category");
         })
-        .then(function (templateRepository) {
-            return templateRepository.find()
+        .then(function (categoryRepository) {
+            return categoryRepository.find()
         })
-        .then(function (template) {
-            // console.log("template: ", template);
+        .then(function (category) {
+            // console.log("category: ", category);
             res.render('home', {
-                template: template
+                category: category
             })
         });
 })
@@ -226,22 +228,23 @@ app.post('/post', (req, res) => {
         dataSource
             .initialize()
             .then(function (connection) {
-                return connection.getRepository("template");
+                return connection.getRepository("category");
             })
-            .then(function (templateRepository) {
-                var template = {
+            .then(function (categoryRepository) {
+                var category = {
                     title: title,
                     content: contentText,
                     tag: tagText,
+
                     path: uploadImage,
 
                 };
-                return templateRepository.save(template)
+                return categoryRepository.save(category)
             })
-            .then(function (templates) {
-                console.log("template has been successfully saved: ", templates);
+            .then(function (categorys) {
+                console.log("category has been successfully saved: ", categorys);
             })
-        res.redirect('/template')
+        res.redirect('/category')
 
     } else if (draftWrite && req.cookies.username) {
         dataSource
@@ -255,15 +258,15 @@ app.post('/post', (req, res) => {
                     content: contentText,
                     tag: tagText,
                     path: uploadImage,
-
                     username: req.cookies.username
                 };
                 return draftRepository.save(draft)
             })
             .then(function (drafts) {
-                console.log("template has been successfully saved: ", drafts);
+                console.log("category has been successfully saved: ", drafts);
             })
-        res.send('save successfully.  <a href="/template"> click here to template page');
+        res.send('save successfully.  <a href="/category"> click here to category page');
+
     } else if (loaddraft && req.cookies.username) {
         dataSource
             .initialize()
@@ -275,9 +278,11 @@ app.post('/post', (req, res) => {
                     where: { username: req.cookies.username }
                 })
             })
-            .then(function (load) {
-                res.json(load)
-                console.log(load)
+            .then(function (drafts) {
+                // console.log(drafts[0]);
+                res.render('post', {
+                    drafts: drafts
+                })
             })
 
     } else {
@@ -323,7 +328,7 @@ app.post('/post', (req, res) => {
 // dataSource
 //     .initialize()
 //     .then(function (connection) {
-//         return connection.getRepository("template");
+//         return connection.getRepository("category");
 //     }).then(function (studentRepository) {
 //         var student = {
 //             id: "Student5",
@@ -351,7 +356,7 @@ app.post('/post', (req, res) => {
 // connection.connect(function (err) {
 //     if (err) throw err;
 //     console.log("Connected!");
-//     var sql = "INSERT INTO template (title, content) VALUES ?";
+//     var sql = "INSERT INTO category (title, content) VALUES ?";
 //     var values = [
 //         ['Thủ tướng Anh xin lỗi vì phạm sai lầm', 'Thủ tướng Liz Truss xin lỗi vì những sai lầm trong 6 tuần đầu nhiệm kỳ làm ảnh hưởng niềm tin của nhà đầu tư, nhưng quyết định không từ chức. Tôi chỉ muốn giúp đỡ người dân đang phải chịu hóa đơn năng lượng cao bằng chính sách cắt giảm thuế, nhưng chúng tôi đã đi quá nhanh và quá xa, Thủ tướng Anh Liz Truss nói trong cuộc phỏng vấn ngày 17/10, đề cập đến kế hoạch kích thích kinh tế đầy tham vọng của mình.'],
 //         ['Chính phủ Pháp họp khẩn vì khủng hoảng nhiên liệu', 'Tổng thống Macron triệu tập cuộc họp với các bộ trưởng nhằm giải quyết tình trạng đình công lan rộng, đang tạo ra cuộc khủng hoảng năng lượng tại Pháp.'],

@@ -10,7 +10,7 @@ function route(app) {
         res.sendFile(fileName, options)
     });
 
-    app.get('/post', (req, res) => {
+    app.get('/post2', (req, res) => {
         var options = {
             root: path.join(__dirname)
         };
@@ -43,7 +43,7 @@ function route(app) {
         res.sendFile(fileName, options)
     });
 
-    app.get('/newPost')
+    // app.get('/newPost')
 }
 
 module.exports = route;
